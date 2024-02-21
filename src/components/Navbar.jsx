@@ -23,7 +23,7 @@ export const Navbar = () => {
                         <li><a>News</a></li>
                     </ul>
                 </div>
-                <a href='/' className="btn btn-ghost text-xl">FutLive</a>
+                <a href='/' className=" text-xl">FutLive</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

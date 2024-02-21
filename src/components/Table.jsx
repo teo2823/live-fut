@@ -5,7 +5,7 @@ export const Table = ({ data }) => {
     return (
         <>
             <h2 className=' text-center mt-5 mb-7 text-3xl' >Live</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-7 ' >
+            <div className='grid grid-cols-1 px-5 md:grid-cols-2 gap-7 lg:px-0 ' >
                 {data.response.map((fixtures) => (
                     <Link to={`/fixtures/${fixtures.fixture.id}`} key={fixtures.fixture.id}>
 

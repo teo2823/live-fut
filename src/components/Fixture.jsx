@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import YellowCardImg from "../assets/images/yellow-card.png"
 
 export const Fixture = ({ data }) => {
     const params = useParams();
@@ -12,7 +13,7 @@ export const Fixture = ({ data }) => {
 
 
     return (
-        <div className="mt-5">
+        <div className="mt-5 ">
             <div className="flex items-center justify-center w-full py-3 mb-2 bg-gray-800 text-xl md:text-2xl">
 
                 <div className="flex justify-center gap-4 items-center">
@@ -51,7 +52,7 @@ export const Fixture = ({ data }) => {
                 </div>
 
             </div>
-            <div className="">
+            <div className="px-5 lg:px-0">
                 <p className="flex items-center justify-center w-full py-2 mb-2 bg-gray-800 text-lg md:text-xl">Timeline</p>
                 {fixtures.events ? (
                     fixtures.events.map((event) => (
@@ -59,11 +60,29 @@ export const Fixture = ({ data }) => {
                             <div className="p-5 flex flex-col w-full border-b border-b-gray-500" key={event.team.id}>
                                 {event.type === "Goal" && (
                                     <div className="flex justify-center items-center">
-                                        <p className=' relative right-20 '>{event.time.elapsed}'</p>
+                                        <p className='relative right-3 text-green-500'>{event.time.elapsed}'</p>
                                         <div className="flex flex-col justify-center items-center">
                                             <div className='flex gap-3'>
-                                                <i className="fa-regular fa-futbol text-xl"></i>
+                                                <i className="fa-regular fa-futbol text-xl text-white"></i>
                                                 <p>Goal!</p>
+                                            </div>
+                                            <div className='flex justify-center items-center gap-2'>
+                                                <p>{event.player.name}</p>
+                                                <small className='flex items-center'>({event.team.name} <img className=' size-5 ml-2' src={event.team.logo} alt="" />)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ) : event.type === "Card" ? (
+                            <div className="p-5 flex flex-col w-full border-b border-b-gray-500" key={event.team.id}>
+                                {event.type === "Card" && (
+                                    <div className="flex justify-center items-center w-full">
+                                        <p className='relative right-3 text-green-500'>{event.time.elapsed}'</p>
+                                        <div className="flex flex-col justify-center items-center">
+                                            <div className='flex gap-2'>
+                                                <img className='size-5' src={YellowCardImg} alt="" />
+                                                <p>Yellow Card</p>
                                             </div>
                                             <div className='flex justify-center items-center gap-3'>
                                                 <p>{event.player.name}</p>
@@ -71,7 +90,6 @@ export const Fixture = ({ data }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                 )}
                             </div>
                         ) : null)
