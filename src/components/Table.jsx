@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import GoToTop from './GoToTop'
 
 export const Table = ({ data }) => {
     return (
@@ -46,9 +47,10 @@ export const Table = ({ data }) => {
                             </div>
                         </div>
                     </Link>
-
+                    
                 ))}
             </div>
+            <GoToTop />
         </>
     )
 }

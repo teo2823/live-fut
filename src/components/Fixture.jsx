@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import YellowCardImg from "../assets/images/yellow-card.png"
+import GoToTop from './GoToTop';
 
 export const Fixture = ({ data }) => {
     const params = useParams();
@@ -98,7 +99,7 @@ export const Fixture = ({ data }) => {
             </div>
 
 
-
+            <GoToTop />                         
         </div>
 
 
