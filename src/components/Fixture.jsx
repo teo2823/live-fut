@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import YellowCardImg from "../assets/images/yellow-card.png"
 import GoToTop from './GoToTop';
+import { Statistics } from './Statistics';
 
 export const Fixture = ({ data }) => {
     const params = useParams();
@@ -11,8 +12,7 @@ export const Fixture = ({ data }) => {
         return match.fixture.id == matchID
     })
     const fixtures = results[0];
-
-
+    
     return (
         <div className="mt-5 ">
             <div className="flex items-center justify-center w-full py-3 mb-2 bg-gray-800 text-xl md:text-2xl">
@@ -28,7 +28,7 @@ export const Fixture = ({ data }) => {
                 <p className=' hidden mx-4 md:flex'>•</p>
                 <p className=' hidden md:flex'>{fixtures.league.round}</p>
             </div>
-            <div className="score flex w-full py-8 md:px-4">
+            <div className="score bg-score bg-center bg-cover bg-black/50 bg-blend-darken text-white flex w-full py-8 md:px-4">
                 <div className=' w-1/3 first-team flex flex-col justify-center items-center'>
                     <img src={fixtures.teams.home.logo} alt="" className=' size-16 md:size-28' />
                     <h2 className=' text-lg md:text-2xl mt-2'>{fixtures.teams.home.name}</h2>
@@ -38,12 +38,12 @@ export const Fixture = ({ data }) => {
                     <p className='md:hidden'>{fixtures.league.round}</p>
                     <p>{fixtures.fixture.status.long}</p>
                     <div className=" flex justify-center items-center text-5xl md:text-7xl lg:text-8xl ">
-                        <h3>{fixtures.goals.home}</h3>
-                        <p>-</p>
-                        <h3>{fixtures.goals.away}</h3>
+                        <h3 className=' shadow  '>{fixtures.goals.home}</h3>
+                        <p className=' shadow '>-</p>
+                        <h3 className=' shadow  '>{fixtures.goals.away}</h3>
                     </div>
-                    <p className='text-xl lg:text-2xl text-green-500'>{fixtures.fixture.status.elapsed}'</p>
-                    <p className=' text-sm mt-2 text-gray-400'>{fixtures.fixture.venue.name}</p>
+                    <p className='text-xl lg:text-2xl text-green-300'>{fixtures.fixture.status.elapsed}'</p>
+                    <p className=' text-sm mt-2 '>{fixtures.fixture.venue.name}</p>
 
                 </div>
 
@@ -97,8 +97,8 @@ export const Fixture = ({ data }) => {
                     )
                 ) : null}
             </div>
-
-
+            <p className="flex items-center justify-center w-full py-2 mt-4 mb-2 bg-gray-800 text-lg md:text-xl">Stastics</p>                        
+            <Statistics matchId={matchID} fixtures={fixtures}/>
             <GoToTop />                         
         </div>
 
