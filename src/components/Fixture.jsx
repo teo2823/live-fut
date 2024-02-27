@@ -4,7 +4,7 @@ import YellowCardImg from "../assets/images/yellow-card.png"
 import GoToTop from './GoToTop';
 import { Statistics } from './Statistics';
 
-export const Fixture = ({ data }) => {
+export const Fixture = ({ data, error, loading }) => {
     const params = useParams();
 
     const matchID = params.matchID;
@@ -12,9 +12,13 @@ export const Fixture = ({ data }) => {
         return match.fixture.id == matchID
     })
     const fixtures = results[0];
+    console.log(fixtures)
     
     return (
+        
         <div className="mt-5 ">
+            {loading && (<h2>cargando..</h2>)}
+            {error && (<h2>Something went wrong.</h2>)}
             <div className="flex items-center justify-center w-full py-3 mb-2 bg-gray-800 text-xl md:text-2xl">
 
                 <div className="flex justify-center gap-4 items-center">

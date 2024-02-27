@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
+//import { useState, useEffect } from 'react'
 import { Navbar } from './components/Navbar'
 import { Table } from './components/Table'
 import { Fixture } from './components/Fixture'
 import { Footer } from './components/Footer'
-import { fetchFixtures } from './lib/fetchData'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { data } from './lib/testData'
+import { useFetch } from './Hooks/useFetch'
 import './App.css'
 
 
@@ -20,16 +18,24 @@ function App() {
     fetchData()
   },[])*/
 
+  const { data, loading, error} = useFetch("fixtures", "live=all")
+  
+  if (!data) {
+    return null;
+  }
+
+  console.log(data)
+
   return (
     <div >
       <Navbar />
-      <BrowserRouter>
+       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Table data={data} />}></Route>
-          <Route path='/fixtures/:matchID' element={<Fixture data={data} />}></Route>
+          <Route path='/' element={<Table data={data} loading={loading} error={error}/>}></Route>
+           <Route path='/fixtures/:matchID' element={<Fixture data={data} loading={loading} error={error}/>}></Route> 
         </Routes> 
       
-      </BrowserRouter>
+      </BrowserRouter> 
       <Footer />
       
     </div>

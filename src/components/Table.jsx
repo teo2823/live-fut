@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import GoToTop from './GoToTop'
 
-export const Table = ({ data }) => {
+export const Table = ({ data, loading, error }) => {
     return (
         <>
+            {loading && (<h2>cargando..</h2>)}
+            {error && (<h2>Something went wrong.</h2>)}
             <h2 className=' text-center mt-5 mb-7 text-3xl' >Live</h2>
             <div className='grid grid-cols-1 px-5 md:grid-cols-2 gap-7 lg:px-0 ' >
                 {data.response.map((fixtures) => (
