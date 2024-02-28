@@ -12,7 +12,6 @@ export const Fixture = ({ data, error, loading }) => {
         return match.fixture.id == matchID
     })
     const fixtures = results[0];
-    console.log(fixtures)
     
     return (
         
@@ -32,7 +31,7 @@ export const Fixture = ({ data, error, loading }) => {
                 <p className=' hidden mx-4 md:flex'>•</p>
                 <p className=' hidden md:flex'>{fixtures.league.round}</p>
             </div>
-            <div className="score bg-score bg-center bg-cover bg-black/50 bg-blend-darken text-white flex w-full py-8 md:px-4">
+            <div className="score rounded-xl bg-center bg-cover bg-holly-950 text-white flex w-full py-8 md:px-4">
                 <div className=' w-1/3 first-team flex flex-col justify-center items-center'>
                     <img src={fixtures.teams.home.logo} alt="" className=' size-16 md:size-28' />
                     <h2 className=' text-lg md:text-2xl mt-2'>{fixtures.teams.home.name}</h2>
@@ -57,12 +56,12 @@ export const Fixture = ({ data, error, loading }) => {
                 </div>
 
             </div>
-            <div className="px-5 lg:px-0">
-                <p className="flex items-center justify-center w-full py-2 mb-2 bg-gray-800 text-lg md:text-xl">Timeline</p>
+            <div className=" lg:px-0">
+                <p className="flex items-center text-white bg-holly-700 justify-center w-full py-2 mb-2 bg-gray-800 text-lg md:text-xl">Timeline</p>
                 {fixtures.events ? (
                     fixtures.events.map((event) => (
                         event.type === "Goal" ? (
-                            <div className="p-5 flex flex-col w-full border-b border-b-gray-500" key={event.team.id}>
+                            <div className="p-5 flex flex-col w-full border-b border-b-holly-400" key={event.team.id}>
                                 {event.type === "Goal" && (
                                     <div className="flex justify-center items-center">
                                         <p className='relative right-3 text-green-500'>{event.time.elapsed}'</p>
@@ -80,7 +79,7 @@ export const Fixture = ({ data, error, loading }) => {
                                 )}
                             </div>
                         ) : event.type === "Card" ? (
-                            <div className="p-5 flex flex-col w-full border-b border-b-gray-500" key={event.team.id}>
+                            <div className="p-5 flex flex-col w-full border-b border-b-holly-400" key={event.team.id}>
                                 {event.type === "Card" && (
                                     <div className="flex justify-center items-center w-full">
                                         <p className='relative right-3 text-green-500'>{event.time.elapsed}'</p>
@@ -101,7 +100,7 @@ export const Fixture = ({ data, error, loading }) => {
                     )
                 ) : null}
             </div>
-            <p className="flex items-center justify-center w-full py-2 mt-4 mb-2 bg-gray-800 text-lg md:text-xl">Stastics</p>                        
+            <p className="text-white bg-holly-700 flex items-center justify-center w-full py-2  mb-2 bg-gray-800 text-lg md:text-xl">Stastics</p>                        
             <Statistics matchId={matchID} fixtures={fixtures}/>
             <GoToTop />                         
         </div>
