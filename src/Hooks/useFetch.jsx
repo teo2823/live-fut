@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export const useFetch = (endpoint, params) => {
-
+ 
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -16,8 +16,8 @@ export const useFetch = (endpoint, params) => {
 
     useEffect(()=> {
         const fetchData = async () => {
-            setLoading(true)
             try {
+                setLoading(true)
                 const response = await axios.get(`${BASE_URL}/${endpoint}?${params}`, { headers });
                 setData(response.data);
             } catch (err) {

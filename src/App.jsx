@@ -13,19 +13,18 @@ function App() {
  
 
   const { data, loading, error} = useFetch("fixtures", "live=all")
+  console.log(data)
   
   if (!data) {
     return null;
   }
-
-  console.log(data)
 
   return (
     <div >
       <Navbar />
        <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Table data={data} loading={loading} error={error} />}></Route>
+          <Route path='/' element={<Table />}></Route>
            <Route path='/fixtures/:matchID' element={<Fixture data={data} loading={loading} error={error} />}></Route> 
         </Routes> 
       
