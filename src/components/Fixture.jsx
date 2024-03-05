@@ -13,16 +13,17 @@ export const Fixture = ({ data, error, loading }) => {
   const fixtures = results[0];
   const length = fixtures.events.length 
 
-  if (loading) {
+  if (!data) {
+    return null;
 
-    return (
-      <div className="">
-        <div className="flex justify-center gap-4">
-          <div className="skeleton h-4 w-8"></div>
-          <div className="skeleton h-4 w-6"></div>
+  } else {
+    if (data.errors ) {
+      return (
+        <div className=" flex justify-center items-center py-14 px-6 text-xl lg:text-2xl xl:text-4xl">
+          <h2>Error, intenta mas tarde...</h2>
         </div>
-      </div>
-    )
+      )
+    }
   }
   
 
