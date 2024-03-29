@@ -23,16 +23,8 @@ export const Table = () => {
 
   if (!data) {
     return null;
-
-  } else {
-    if (data.errors ) {
-      return (
-        <div className=" flex justify-center items-center py-14 px-6 text-xl lg:text-2xl xl:text-4xl">
-          <h2>Error, intenta mas tarde...</h2>
-        </div>
-      )
-    }
   }
+
 
   return (
     <>
